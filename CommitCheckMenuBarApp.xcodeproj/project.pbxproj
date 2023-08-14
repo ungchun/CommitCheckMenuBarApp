@@ -11,6 +11,7 @@
 		65C68BDD2A89F18900ED0C2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68BDC2A89F18900ED0C2F /* ContentView.swift */; };
 		65C68BDF2A89F18A00ED0C2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C68BDE2A89F18A00ED0C2F /* Assets.xcassets */; };
 		65C68BE22A89F18A00ED0C2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C68BE12A89F18A00ED0C2F /* Preview Assets.xcassets */; };
+		65C68C092A89FAC300ED0C2F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68C082A89FAC300ED0C2F /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		65C68BE32A89F18A00ED0C2F /* CommitCheckMenuBarApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommitCheckMenuBarApp.entitlements; sourceTree = "<group>"; };
 		65C68BE82A89F18A00ED0C2F /* CommitCheckMenuBarAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommitCheckMenuBarAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C68BF22A89F18A00ED0C2F /* CommitCheckMenuBarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommitCheckMenuBarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C68C082A89FAC300ED0C2F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		65C68C052A89F59200ED0C2F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65C68C082A89FAC300ED0C2F /* Home.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C68BDD2A89F18900ED0C2F /* ContentView.swift in Sources */,
+				65C68C092A89FAC300ED0C2F /* Home.swift in Sources */,
 				65C68BDB2A89F18900ED0C2F /* CommitCheckMenuBarAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +422,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CommitCheckMenuBarApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,6 +448,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CommitCheckMenuBarApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
