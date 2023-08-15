@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct CommitCheckMenuBarAppApp: App {
 	
+	@ObservedObject var viewModel = HomeViewModel()
 	@NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: viewModel)
         }
     }
 }

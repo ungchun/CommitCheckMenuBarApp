@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct Home: View {
-	
+
 	@State var currentTab: String = "test1"
 	@Namespace var animation
+	
+	@StateObject var viewModel: HomeViewModel = .init()
 	
     var body: some View {
 		VStack {
@@ -19,7 +21,8 @@ struct Home: View {
 			
 			Spacer()
 			
-			Text("")
+			Text("\(viewModel.textValue!)")
+			Text("\(viewModel.todayCommit!)")
 			
 			Spacer()
 			
