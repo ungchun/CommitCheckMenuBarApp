@@ -15,6 +15,9 @@
 		65C68C0B2A8A0A3700ED0C2F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68C0A2A8A0A3700ED0C2F /* HomeViewModel.swift */; };
 		65C68C0F2A8A1FA700ED0C2F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 65C68C0E2A8A1FA700ED0C2F /* Alamofire */; };
 		65C68CC32A8B548D00ED0C2F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 65C68CC22A8B548D00ED0C2F /* SwiftSoup */; };
+		65C68CC62A8DFAEB00ED0C2F /* UserDefaultsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68CC52A8DFAEB00ED0C2F /* UserDefaultsSetting.swift */; };
+		65C68CC82A8DFAF400ED0C2F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68CC72A8DFAF400ED0C2F /* UserDefaultsWrapper.swift */; };
+		65C68D172A8F463000ED0C2F /* PartialSansKR-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65C68D152A8F45E300ED0C2F /* PartialSansKR-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		65C68D162A8F461A00ED0C2F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				65C68D172A8F463000ED0C2F /* PartialSansKR-Regular.otf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		65C68BD72A89F18900ED0C2F /* CommitCheckMenuBarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommitCheckMenuBarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C68BDA2A89F18900ED0C2F /* CommitCheckMenuBarAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCheckMenuBarAppApp.swift; sourceTree = "<group>"; };
@@ -46,6 +62,9 @@
 		65C68C082A89FAC300ED0C2F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		65C68C0A2A8A0A3700ED0C2F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		65C68C0C2A8A0BA200ED0C2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65C68CC52A8DFAEB00ED0C2F /* UserDefaultsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSetting.swift; sourceTree = "<group>"; };
+		65C68CC72A8DFAF400ED0C2F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		65C68D152A8F45E300ED0C2F /* PartialSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PartialSansKR-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +115,7 @@
 		65C68BD92A89F18900ED0C2F /* CommitCheckMenuBarApp */ = {
 			isa = PBXGroup;
 			children = (
+				65C68D142A8F45D200ED0C2F /* Fonts */,
 				65C68C0C2A8A0BA200ED0C2F /* Info.plist */,
 				65C68C072A89F5A200ED0C2F /* Model */,
 				65C68C062A89F59600ED0C2F /* ViewModel */,
@@ -105,6 +125,8 @@
 				65C68BDE2A89F18A00ED0C2F /* Assets.xcassets */,
 				65C68BE32A89F18A00ED0C2F /* CommitCheckMenuBarApp.entitlements */,
 				65C68BE02A89F18A00ED0C2F /* Preview Content */,
+				65C68CC52A8DFAEB00ED0C2F /* UserDefaultsSetting.swift */,
+				65C68CC72A8DFAF400ED0C2F /* UserDefaultsWrapper.swift */,
 			);
 			path = CommitCheckMenuBarApp;
 			sourceTree = "<group>";
@@ -140,6 +162,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		65C68D142A8F45D200ED0C2F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65C68D152A8F45E300ED0C2F /* PartialSansKR-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,6 +180,7 @@
 				65C68BD32A89F18900ED0C2F /* Sources */,
 				65C68BD42A89F18900ED0C2F /* Frameworks */,
 				65C68BD52A89F18900ED0C2F /* Resources */,
+				65C68D162A8F461A00ED0C2F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -278,9 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65C68CC62A8DFAEB00ED0C2F /* UserDefaultsSetting.swift in Sources */,
 				65C68BDD2A89F18900ED0C2F /* ContentView.swift in Sources */,
 				65C68C092A89FAC300ED0C2F /* Home.swift in Sources */,
 				65C68BDB2A89F18900ED0C2F /* CommitCheckMenuBarAppApp.swift in Sources */,
+				65C68CC82A8DFAF400ED0C2F /* UserDefaultsWrapper.swift in Sources */,
 				65C68C0B2A8A0A3700ED0C2F /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

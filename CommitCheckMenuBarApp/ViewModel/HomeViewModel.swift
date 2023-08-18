@@ -7,11 +7,15 @@
 
 import Foundation
 import SwiftSoup
+import Alamofire
 
 final class HomeViewModel: ObservableObject {
 	
+	@Published var isAccessTokenState: Bool = false
 	@Published var textValue: String?
-	@Published var todayCommit: String?
+	@Published var todayCommitValue: Int?
+	@Published var todayCommit: Bool?
+//	@Published var username: String?
 	
 	init() {
 		let urlAddress = "https://github.com/ungchun"
@@ -49,8 +53,9 @@ final class HomeViewModel: ObservableObject {
 			
 			let cal = parseCommitData(from: text)
 			
-			textValue = String(cal.totalSum)
-			todayCommit = cal.todayCommit ? "오늘 커밋함" : "오늘 커밋 안함"
+			textValue = String(cal.0.totalSum)
+			todayCommit = cal.0.todayCommit ? true : false
+			todayCommitValue = cal.1
 			
 //			for commitData in commitDataArray {
 //				print("Date: \(commitData.date), Contributions: \(commitData.contributions)")
@@ -71,6 +76,61 @@ final class HomeViewModel: ObservableObject {
 }
 
 
+func requestAccessToken(with code: String) -> String {
+	var name = ""
+	let url = "https://github.com/login/oauth/access_token"
+	let parameters = ["client_id": "6f121e037458424660e6",
+					  "client_secret": "1011f631d3699763d6d21e9327888ec55bdae987",
+					  "code": code]
+	
+	let headers: HTTPHeaders = ["Accept": "application/json"]
+	
+	AF.request(url, method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+		switch response.result {
+		case let .success(json):
+			if let dic = json as? [String: String] {
+				print(dic["access_token"]!)
+				print(dic["scope"]!)
+				print(dic["token_type"]!)
+				
+				updateGitHubUserInfo(token: dic["access_token"]!) { result in
+					print("call \(result)")
+					
+					let getName = result["name"] as? String
+					name = getName!
+					print("name \(name)")
+					
+				}
+			}
+		case let .failure(error):
+			print(error)
+		}
+	}
+	return name
+}
+
+func updateGitHubUserInfo(token: String, completion: @escaping ([String: Any]) -> Void) {
+	let urlString = "https://api.github.com/user"
+	
+	let headers: HTTPHeaders = [
+		"Accept": "application/vnd.github+json",
+		"Authorization": "Bearer \(token)",
+	]
+	
+	AF.request(urlString, method: .patch, encoding: JSONEncoding.default, headers: headers)
+		.responseJSON { response in
+			switch response.result {
+			case .success(let value):
+				if let json = value as? [String: Any] {
+					completion(json)
+				} else { }
+			case .failure(let error): break
+			}
+		}
+}
+
+
+
 struct CommitData {
 //	let date: String
 //	let contributions: Int
@@ -79,11 +139,13 @@ struct CommitData {
 	let todayCommit: Bool
 }
 
-func parseCommitData(from input: String) ->  CommitData {
+func parseCommitData(from input: String) -> (CommitData, Int) {
 	let lines = input.split(separator: "\n")
 	var commitDataArray: [CommitData] = []
+	var todayCommitStreak = 0
 	var stringArr: [[String]] = []
 	var temp: [String] = []
+//	print("lines = \(lines)")
 	for line in lines {
 		var cnt = 0
 		let components = line.split(separator: " ")
@@ -135,13 +197,27 @@ func parseCommitData(from input: String) ->  CommitData {
 		stringArr.sort { (item1, item2) in
 			if let date1 = dateFormatter.date(from: item1[0]),
 			   let date2 = dateFormatter.date(from: item2[0]) {
-				return date1 < date2
+				return date1 > date2
 			}
 			return false
 		}
-//		print("stringArr \(stringArr)")
+
+		todayCommitStreak = calculateConsecutiveCommitDays(commitData: stringArr)
+		print("todayCommitStreak = \(todayCommitStreak)")
 	}
-	//	print("now \(Date())")
 	let totalSum = stringArr.reduce(0) { $0 + (Int($1[1]) ?? 0) }
-	return CommitData(totalSum: totalSum, todayCommit: stringArr.last?.last == "0" ? false : true)
+	return (CommitData(totalSum: totalSum, todayCommit: stringArr.first?.last == "0" ? false : true), todayCommitStreak)
+}
+
+func calculateConsecutiveCommitDays(commitData: [[String]]) -> Int {
+
+	var count = 0
+	for data in commitData {
+		if data.last == "0" {
+			break
+		}
+		count += 1
+	}
+
+	return count
 }
