@@ -59,8 +59,8 @@ final class HomeViewModel: ObservableObject {
 	func requestAccessToken(with code: String) {
 		var name = ""
 		let url = "https://github.com/login/oauth/access_token"
-		let parameters = ["client_id": "6f121e037458424660e6",
-						  "client_secret": "1011f631d3699763d6d21e9327888ec55bdae987",
+		let parameters = ["client_id": ClientID,
+						  "client_secret": ClientSecret,
 						  "code": code]
 		
 		let headers: HTTPHeaders = ["Accept": "application/json"]
