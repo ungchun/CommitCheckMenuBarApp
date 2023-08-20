@@ -23,7 +23,7 @@ struct ContentView: View {
 				 destination: components.url!)
 			.onOpenURL { url in
 				let code = url.absoluteString.components(separatedBy: "code=").last ?? ""
-				requestAccessToken(with: code)
+				viewModel.requestAccessToken(with: code)
 			}
 		}
 		.onAppear {
@@ -31,7 +31,6 @@ struct ContentView: View {
 				URLQueryItem(name: "client_id", value: self.clientID),
 				URLQueryItem(name: "scope", value: self.scope),
 			]
-			
 		}
 		.padding()
 	}

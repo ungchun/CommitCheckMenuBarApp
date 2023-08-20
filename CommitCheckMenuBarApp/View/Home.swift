@@ -15,25 +15,31 @@ struct Home: View {
 	@StateObject var viewModel: HomeViewModel = .init()
 	
 	var body: some View {
-		if currentTab == "TODAY" {
-			mainView()
+		if !viewModel.isAccessTokenState {
+			VStack {
+				Text("Fetch")
+					.onTapGesture {
+						viewModel.isAccessTokenState = UserDefaultsSetting.username == "" ? false : true
+					}
+			}
+			.frame(width: 320, height: 450)
+			.background(Color("BG"))
+			.preferredColorScheme(.dark)
+			.buttonStyle(.plain)
 		} else {
-			mainView2()
+			if currentTab == "TODAY" {
+				TodayView()
+				//					.onAppear {
+				//						UserDefaultsSetting.username = ""
+				//					}
+			} else {
+				AllView()
+			}
 		}
-		
-		//		if UserDefaultsSetting.username == "" {
-		//			// github api로 username 가져와서 세팅
-		//		} else {
-		//			if currentTab == "test1" {
-		//				mainView()
-		//			} else {
-		//				mainView2()
-		//			}
-		//		}
 	}
 	
 	@ViewBuilder
-	func mainView() -> some View {
+	func TodayView() -> some View {
 		VStack {
 			CustomSegmentdControl()
 				.padding()
@@ -43,7 +49,7 @@ struct Home: View {
 			
 			HStack {
 				Text("TODAY COMMIT ...")
-					.font(.custom("Partial-Sans-KR", size: 20))
+					.font(.system(size: 20, weight: .bold))
 					.padding(.leading, 20)
 				Spacer()
 			}
@@ -68,55 +74,59 @@ struct Home: View {
 	}
 	
 	@ViewBuilder
-	func mainView2() -> some View {
-		VStack {
+	func AllView() -> some View {
+		VStack(spacing: 0) {
 			CustomSegmentdControl()
 				.padding()
 			
 			Spacer()
-				.frame(height: 40)
+				.frame(height: 10)
 			
-			HStack(alignment: .top) {
-				VStack(alignment: .leading) {
-					
-					Text("ungchun")
-						.font(.custom("Partial-Sans-KR", size: 20))
-						.padding(.leading, 20)
-					
-					Spacer()
-						.frame(height: 50)
-					
-					HStack {
-						Text("\(viewModel.textValue!)")
-							.font(.custom("Partial-Sans-KR", size: 40))
-						Text("COMMIT")
-							.font(.custom("Partial-Sans-KR", size: 15))
-					}
-					.padding(.leading, 40)
-					
-					Spacer()
-						.frame(height: 50)
-					
-					HStack {
-						Text("Continuous")
-							.font(.custom("Partial-Sans-KR", size: 10))
-						Text("\(viewModel.todayCommitValue!)")
-							.font(.custom("Partial-Sans-KR", size: 70))
-						Text("DAY")
-							.font(.custom("Partial-Sans-KR", size: 20))
-					}
-					.padding(.leading, 30)
-					
-
-				}
+			VStack(alignment: .leading) {
+				Divider()
+					.opacity(0)
+				
+				Text("\(UserDefaultsSetting.username)")
+					.font(.custom("Partial-Sans-KR", size: 25))
 				
 				Spacer()
+					.frame(height: 10)
 				
-				// 0.75, 0.5, 0.25
-				GaugeView(filledRatio: 1.0)
-					.frame(width: 20, height: 200)
-					.padding(.trailing, 20)
+				Text("COMMIT")
+					.font(.custom("Partial-Sans-KR", size: 15))
+				
+				Spacer()
+					.frame(height: 5)
+				
+				Text("\(viewModel.allCommitValue!)")
+					.font(.custom("Partial-Sans-KR", size: 60))
+				
+				Spacer()
+					.frame(height: 5)
+				
+				Text("Accumulate")
+					.font(.custom("Partial-Sans-KR", size: 15))
+				
+				Spacer()
+					.frame(height: 5)
+				
+				HStack {
+					Text("\(viewModel.accumulateCommitValue!)")
+						.font(.custom("Partial-Sans-KR", size: 70))
+					Text("DAY")
+						.font(.custom("Partial-Sans-KR", size: 20))
+				}
+				
 			}
+			.padding(.leading, 20)
+			
+			Spacer()
+				.frame(height: 20)
+			
+			// 0.75, 0.5, 0.25
+			GaugeView(filledRatio: 0.25)
+				.frame(height: 20)
+				.padding(.horizontal, 20)
 			
 			Spacer()
 			
@@ -164,14 +174,14 @@ struct GaugeView: View {
 	
 	var body: some View {
 		GeometryReader { geometry in
-			ZStack(alignment: .bottom) {
+			ZStack(alignment: .leading) {
 				Rectangle()
 					.frame(width: geometry.size.width, height: geometry.size.height)
 					.foregroundColor(Color.gray.opacity(0.2))
 				
 				Rectangle()
-					.frame(width: geometry.size.width, height: geometry.size.height * self.filledRatio)
-					.foregroundColor(Color.blue)
+					.frame(width: geometry.size.width * self.filledRatio, height: geometry.size.height)
+					.foregroundColor(Color.white)
 			}
 		}
 	}

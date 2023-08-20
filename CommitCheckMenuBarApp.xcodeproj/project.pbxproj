@@ -18,6 +18,7 @@
 		65C68CC62A8DFAEB00ED0C2F /* UserDefaultsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68CC52A8DFAEB00ED0C2F /* UserDefaultsSetting.swift */; };
 		65C68CC82A8DFAF400ED0C2F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C68CC72A8DFAF400ED0C2F /* UserDefaultsWrapper.swift */; };
 		65C68D172A8F463000ED0C2F /* PartialSansKR-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65C68D152A8F45E300ED0C2F /* PartialSansKR-Regular.otf */; };
+		65D71BCD2A9224C80080877D /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D71BCC2A9224C80080877D /* Commit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		65C68CC52A8DFAEB00ED0C2F /* UserDefaultsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSetting.swift; sourceTree = "<group>"; };
 		65C68CC72A8DFAF400ED0C2F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		65C68D152A8F45E300ED0C2F /* PartialSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PartialSansKR-Regular.otf"; sourceTree = "<group>"; };
+		65D71BCC2A9224C80080877D /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		65C68C072A89F5A200ED0C2F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				65D71BCC2A9224C80080877D /* Commit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				65C68CC62A8DFAEB00ED0C2F /* UserDefaultsSetting.swift in Sources */,
 				65C68BDD2A89F18900ED0C2F /* ContentView.swift in Sources */,
+				65D71BCD2A9224C80080877D /* Commit.swift in Sources */,
 				65C68C092A89FAC300ED0C2F /* Home.swift in Sources */,
 				65C68BDB2A89F18900ED0C2F /* CommitCheckMenuBarAppApp.swift in Sources */,
 				65C68CC82A8DFAF400ED0C2F /* UserDefaultsWrapper.swift in Sources */,
