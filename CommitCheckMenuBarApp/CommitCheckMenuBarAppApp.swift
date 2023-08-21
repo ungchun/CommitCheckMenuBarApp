@@ -40,8 +40,7 @@ class AppDelegate: NSObject, ObservableObject, NSApplicationDelegate {
 		
 		statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		if let menuButton = statusItem?.button {
-//			menuButton.image = .init(systemSymbolName: "dollarsign.circle.fill", accessibilityDescription: nil)
-			menuButton.image = .init(systemSymbolName: "dollarsign.circle.fill", accessibilityDescription: nil)
+			menuButton.image = .init(systemSymbolName: "tree", accessibilityDescription: nil)
 			menuButton.action = #selector(menuButtonAction(sender:))
 		}
 	}
