@@ -9,10 +9,10 @@ import SwiftUI
 
 struct Home: View {
 	
+	@StateObject var viewModel: HomeViewModel = .init()
+	
 	@State var currentTab: String = "TODAY"
 	@Namespace var animation
-	
-	@StateObject var viewModel: HomeViewModel = .init()
 	
 	var body: some View {
 		if !viewModel.isAccessTokenState {
@@ -45,24 +45,21 @@ struct Home: View {
 				.padding()
 			
 			Spacer()
-				.frame(height: 60)
 			
-			HStack {
-				Text("TODAY COMMIT ...")
-					.font(.system(size: 20, weight: .bold))
-					.padding(.leading, 20)
-				Spacer()
-			}
+			Text("TODAY COMMIT")
+				.font(.custom("Partial-Sans-KR", size: 15))
+			//				.font(.system(size: 20, weight: .bold))
 			
 			Spacer()
-				.frame(height: 40)
+				.frame(height: 10)
+			
 			
 			if viewModel.todayCommit! {
-				Text("CLEAR")
-					.font(.custom("Partial-Sans-KR", size: 65))
+				Text("DONE\nDONE")
+					.font(.custom("Partial-Sans-KR", size: 75))
 			} else {
-				Text("NOT YET")
-					.font(.custom("Partial-Sans-KR", size: 65))
+				Text("NOT\nYET")
+					.font(.custom("Partial-Sans-KR", size: 80))
 			}
 			
 			Spacer()
@@ -93,6 +90,7 @@ struct Home: View {
 					.frame(height: 10)
 				
 				Text("COMMIT")
+				//					.font(.system(size: 15, weight: .bold))
 					.font(.custom("Partial-Sans-KR", size: 15))
 				
 				Spacer()
@@ -105,6 +103,7 @@ struct Home: View {
 					.frame(height: 5)
 				
 				Text("Accumulate")
+				//					.font(.system(size: 15, weight: .bold))
 					.font(.custom("Partial-Sans-KR", size: 15))
 				
 				Spacer()
@@ -123,13 +122,16 @@ struct Home: View {
 			Spacer()
 				.frame(height: 20)
 			
-			// 0.75, 0.5, 0.25
-			GaugeView(filledRatio: 0.25)
-				.frame(height: 20)
-				.padding(.horizontal, 20)
+			GaugeView(
+				filledRatio:
+					viewModel.accumulateCommitValue! == 0 ? 0.0 :
+					viewModel.accumulateCommitValue! >= 7 ? 0.25 :
+					viewModel.accumulateCommitValue! >= 14 ? 0.5 :
+					viewModel.accumulateCommitValue! >= 21 ? 0.75 : 1.0)
+			.frame(height: 20)
+			.padding(.horizontal, 20)
 			
 			Spacer()
-			
 		}
 		.frame(width: 320, height: 450)
 		.background(Color("BG"))
