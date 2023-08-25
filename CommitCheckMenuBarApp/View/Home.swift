@@ -125,9 +125,9 @@ struct Home: View {
 			GaugeView(
 				filledRatio:
 					viewModel.accumulateCommitValue! == 0 ? 0.0 :
-					viewModel.accumulateCommitValue! >= 7 ? 0.25 :
-					viewModel.accumulateCommitValue! >= 14 ? 0.5 :
-					viewModel.accumulateCommitValue! >= 21 ? 0.75 : 1.0)
+					viewModel.accumulateCommitValue! >= 1 ? 0.25 :
+					viewModel.accumulateCommitValue! >= 8 ? 0.5 :
+					viewModel.accumulateCommitValue! >= 15 ? 0.75 : 1.0)
 			.frame(height: 20)
 			.padding(.horizontal, 20)
 			
