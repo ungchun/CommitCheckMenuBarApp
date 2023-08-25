@@ -11,5 +11,5 @@
 |:--:|:--:|
 
 # All
-|<img src = "https://github.com/ungchun/CommitCheckMenuBarApp/assets/50910456/b19424a7-a51b-4cbd-bbc4-db492db3874d" width=40%>|
+|<img src = "https://github.com/ungchun/CommitCheckMenuBarApp/assets/50910456/9d69a622-8c63-4228-9d78-91a75fc2461b" width=40%>|
 |:--:|
