@@ -29,9 +29,6 @@ struct Home: View {
 		} else {
 			if currentTab == "TODAY" {
 				TodayView()
-				//					.onAppear {
-				//						UserDefaultsSetting.username = ""
-				//					}
 			} else {
 				AllView()
 			}
@@ -48,7 +45,6 @@ struct Home: View {
 			
 			Text("TODAY COMMIT")
 				.font(.custom("Partial-Sans-KR", size: 15))
-			//				.font(.system(size: 20, weight: .bold))
 			
 			Spacer()
 				.frame(height: 10)
@@ -90,7 +86,6 @@ struct Home: View {
 					.frame(height: 10)
 				
 				Text("COMMIT")
-				//					.font(.system(size: 15, weight: .bold))
 					.font(.custom("Partial-Sans-KR", size: 15))
 				
 				Spacer()
@@ -103,7 +98,6 @@ struct Home: View {
 					.frame(height: 5)
 				
 				Text("Accumulate")
-				//					.font(.system(size: 15, weight: .bold))
 					.font(.custom("Partial-Sans-KR", size: 15))
 				
 				Spacer()
